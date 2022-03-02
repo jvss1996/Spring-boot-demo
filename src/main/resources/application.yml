@@ -1,0 +1,41 @@
+spring:
+  profiles:
+    active: dev
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/demoapp-dev
+    driverClassName: com.mysql.jdbc.Driver
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Hello World (Dev Environment)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env, beans"
+
+---
+
+spring:
+  profiles: prod
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/demoapp-prod
+    driverClassName: com.mysql.jdbc.Driver
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Hello World (Prod Environment)
